@@ -30,10 +30,10 @@ app.use(cookieParser())
 app.use(express.json());
 app.use(cors({
 
-  origin : ["https://playsoft-client-9i5agtshn-karthikeyan-v-maxs-projects.vercel.app/"],
+  origin : ["https://playsoft-client.vercel.app/"],
   methods: ["GET","POST","PUT","DELETE"], 
   credentials:true
-  
+
 }))
 
 

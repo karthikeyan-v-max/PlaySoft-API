@@ -1,5 +1,5 @@
 const express = require('express');
-const { getOrders , intent , confirmation} = require('../controllers/order.controller');
+const { getOrders , intent , confirmation} = require('../controllers/order.controller.js');
 const router = express.Router()
 const { verifyToken } = require('../middleware/jwt.js');
 

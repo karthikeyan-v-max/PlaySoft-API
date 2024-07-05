@@ -1,5 +1,5 @@
-const conversations = require("../models/coversation.model");
-const createError = require("../utils/createError");
+const conversations = require("../models/coversation.model.js");
+const createError = require("../utils/createError.js");
 
 const createConservation = async(req , res , next)=>{
 

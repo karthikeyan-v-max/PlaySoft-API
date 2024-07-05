@@ -1,5 +1,5 @@
-const Gig = require("../models/gig.model");
-const Order = require("../models/order.model");
+const Gig = require("../models/gig.model.js");
+const Order = require("../models/order.model.js");
 require('dotenv').config();
 const Stripe = require("stripe")
 

@@ -1,5 +1,5 @@
-const Message = require("../models/message.model")
-const Conversations = require("../models/coversation.model");
+const Message = require("../models/message.model.js")
+const Conversations = require("../models/coversation.model.js");
 
 const getMessage = async(req,res,next)=>{
     try{

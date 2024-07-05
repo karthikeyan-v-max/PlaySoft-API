@@ -26,15 +26,28 @@ const connectWithRetry = async() => {
 };
 const port = process.env.PORT;
 
+const allowedOrigins = [
+  'https://playsoft-client.vercel.app', // Make sure this matches exactly
+  'https://playsoft-client-8bxyvbb3k-karthikeyan-v-maxs-projects.vercel.app/', // Include any other allowed origins if needed
+  'https://playsoft-client-git-main-karthikeyan-v-maxs-projects.vercel.app/',
+  'https://playsoft-client-karthikeyan-v-maxs-projects.vercel.app/'
+];
+
 app.use(cookieParser())
 app.use(express.json());
+
 app.use(cors({
-
-  origin : "https://playsoft-client.vercel.app/",
-  methods: ["GET","POST","PUT","DELETE"], 
-  credentials:true
-
-}))
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 
 
 app.use("/api/auth",authroute)

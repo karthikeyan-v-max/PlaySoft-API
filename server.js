@@ -26,9 +26,15 @@ const connectWithRetry = async() => {
 };
 const port = process.env.PORT;
 
-app.use(express.json());
 app.use(cookieParser())
-app.use(cors({origin:"http://localhost:5173" , credentials:true}))
+app.use(express.json());
+app.use(cors({
+
+  origin : ["https://playsoft-client-9i5agtshn-karthikeyan-v-maxs-projects.vercel.app/"],
+  methods: ["GET","POST","PUT","DELETE"], 
+  credentials:true
+  
+}))
 
 
 app.use("/api/auth",authroute)
@@ -38,6 +44,7 @@ app.use("/api/message",messageRoute);
 app.use("/api/order",orderRoute);
 app.use("/api/review",reviewRoute);
 app.use("/api/gigs",gigRoute);
+
 
 //error handling middleware
 app.use((err,req,res,next)=>{
@@ -49,6 +56,7 @@ app.use((err,req,res,next)=>{
 
   return res.status(errorStatus).send(errorMessage);
 })
+
 
 app.listen(port,()=>{
   console.log(`hey man I'm running at port ${port} so you go continue your work`);

@@ -60,6 +60,10 @@ app.use("/api/order",orderRoute);
 app.use("/api/review",reviewRoute);
 app.use("/api/gigs",gigRoute);
 
+app.get("/",(req,res)=>{
+  res.json("Hello");
+})
+
 // Global error handling middleware
 app.use((err,req,res,next)=>{
   const errorStatus = err.status || 500;

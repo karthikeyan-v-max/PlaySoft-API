@@ -30,7 +30,8 @@ const allowedOrigins = [
   'https://playsoft-client.vercel.app', // Make sure this matches exactly
   'https://playsoft-client-8bxyvbb3k-karthikeyan-v-maxs-projects.vercel.app/', // Include any other allowed origins if needed
   'https://playsoft-client-git-main-karthikeyan-v-maxs-projects.vercel.app/',
-  'https://playsoft-client-karthikeyan-v-maxs-projects.vercel.app/'
+  'https://playsoft-client-karthikeyan-v-maxs-projects.vercel.app/',
+  'http://localhost:5173'
 ];
 
 app.use(cookieParser())
@@ -38,6 +39,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: (origin, callback) => {
+    // checks the incoming reqest origin is not undefined or the origin is not present in the above allowed origin array
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -58,8 +60,7 @@ app.use("/api/order",orderRoute);
 app.use("/api/review",reviewRoute);
 app.use("/api/gigs",gigRoute);
 
-
-//error handling middleware
+// Global error handling middleware
 app.use((err,req,res,next)=>{
   const errorStatus = err.status || 500;
   if (err.message === "Operation `users.findOne()` buffering timed out after 10000ms"){

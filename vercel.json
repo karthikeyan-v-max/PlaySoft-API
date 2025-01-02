@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+        { "src": "server.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+        { "src": "/api/auth/(.*)", "dest": "server.js" },
+        { "src": "/api/users/(.*)", "dest": "server.js" },
+        { "src": "/api/conversation/(.*)", "dest": "server.js" },
+        { "src": "/api/message/(.*)", "dest": "server.js" },
+        { "src": "/api/order/(.*)", "dest": "server.js" },
+        { "src": "/api/review/(.*)", "dest": "server.js" },
+        { "src": "/api/gigs/(.*)", "dest": "server.js" }
+    ]
+}

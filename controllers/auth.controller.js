@@ -36,6 +36,7 @@ const login = async(req , res, next)=>{
         if(!isCorrect){
             return next(createError(400 , "Wrong password or Username"))
         }
+        
         const token = jwt.sign(
             {
             id:user._id, 
